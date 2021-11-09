@@ -7,9 +7,9 @@ describe Bookmark do
     it 'returns all bookmarks' do
       bookmarks = Bookmark.all
         expect(bookmarks).to eq [
-          "http://www.makersacademy.com/",
-          "http://www.twitter.com/",
-          "http://www.google.com/"
+          "http://www.makersacademy.com",
+          "http://www.twitter.com",
+          "http://www.google.com"
         ]
     end
   end
