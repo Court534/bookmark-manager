@@ -16,6 +16,11 @@ As a user
 So that I can save a frequently visited website
 I would like to add the site's address and title to bookmark manager
 
+As a user
+So I can save a new bookmark
+I would like to add a bookamrk to the original list of bookmarks
+
+
 ## Database table setup
 To create the database please do the following:
 1. Connect to psql

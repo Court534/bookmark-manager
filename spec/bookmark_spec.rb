@@ -18,7 +18,20 @@ describe Bookmark do
       expect(bookmarks).to include('http://www.google.com')
     end
   end
+
+  describe '.create' do
+    it 'creates a new bookmark' do
+        connection = PG.connect(dbname: 'bookmark_manager_test')
+  
+        connection.exec("insert into bookmarks (url) values ('http://www.makersacademy.com');")
+        connection.exec("insert into bookmarks (url) values ('http://www.twitter.com');")
+        connection.exec("insert into bookmarks (url) values ('http://www.google.com');")
+  bookmark = Bookmarks.all
+  Bookmarks.create 
+    end 
+  end
 end
+
 
 # expect(bookmarks).to include "https://www.google.com"
 #       # expect(bookmarks).to include "https://www.twitter.com"
