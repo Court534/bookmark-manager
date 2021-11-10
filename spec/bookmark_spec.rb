@@ -7,9 +7,15 @@ describe Bookmark do
     it 'returns all bookmarks' do
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
-      connection.exec("insert into bookmarks (url) values ('http://www.makersacademy.com');")
-      connection.exec("insert into bookmarks (url) values ('http://www.twitter.com');")
-      connection.exec("insert into bookmarks (url) values ('http://www.google.com');")
+      connection.exec(
+        "insert into bookmarks (url) values ('http://www.makersacademy.com');",
+      )
+      connection.exec(
+        "insert into bookmarks (url) values ('http://www.twitter.com');",
+      )
+      connection.exec(
+        "insert into bookmarks (url) values ('http://www.google.com');",
+      )
 
       bookmarks = Bookmark.all
 
@@ -20,18 +26,25 @@ describe Bookmark do
   end
 
   describe '.create' do
+    let(:url) { 'http://bbc.co.uk' }
     it 'creates a new bookmark' do
-        connection = PG.connect(dbname: 'bookmark_manager_test')
-  
-        connection.exec("insert into bookmarks (url) values ('http://www.makersacademy.com');")
-        connection.exec("insert into bookmarks (url) values ('http://www.twitter.com');")
-        connection.exec("insert into bookmarks (url) values ('http://www.google.com');")
-  bookmark = Bookmarks.all
-  Bookmarks.create 
-    end 
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+
+      connection.exec(
+        "insert into bookmarks (url) values ('http://www.makersacademy.com');",
+      )
+      connection.exec(
+        "insert into bookmarks (url) values ('http://www.twitter.com');",
+      )
+      connection.exec(
+        "insert into bookmarks (url) values ('http://www.google.com');",
+      )
+      Bookmark.create(url)
+      bookmarks = Bookmark.all
+      expect(bookmarks).to include(url)
+    end
   end
 end
-
 
 # expect(bookmarks).to include "https://www.google.com"
 #       # expect(bookmarks).to include "https://www.twitter.com"

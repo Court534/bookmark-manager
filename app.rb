@@ -10,7 +10,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/' do
-    'Welcome to Bookmark Manager'
+    redirect '/bookmarks'
   end
 
   get '/bookmarks' do
@@ -18,5 +18,10 @@ class BookmarkManager < Sinatra::Base
     erb :'bookmarks/index'
   end
 
+  post '/add_bookmarks' do
+    p "This is what my output is from the form #{params[:url]}"
+    Bookmark.create(params[:url])
+    redirect '/bookmarks'
+  end
   run! if app_file == $PROGRAM_NAME
 end
